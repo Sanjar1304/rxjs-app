@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../model/course';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators'
-
-import { CoursesService } from '../services/courses.service';
-import { sortCoursesBySeqNo } from '../model/course'
-import { LoadingService } from '../loading/loading.service';
-import { MessageService } from '../messages/message.service';
+import { Observable } from 'rxjs';
 import { CoursesStore } from '../services/courses.store';
 
 
