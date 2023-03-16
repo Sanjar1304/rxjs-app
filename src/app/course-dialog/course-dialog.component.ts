@@ -24,20 +24,26 @@ export class CourseDialogComponent implements AfterViewInit {
         private coursesStore: CoursesStore) {
 
         this.course = course;
+        this.validationModal()
+    }
 
-        this.form = fb.group({
-            description: [course.description, Validators.required],
-            category: [course.category, Validators.required],
+
+    ngAfterViewInit() {}
+
+
+    // ================ VALIDATING DIALOG MODAL ==============//
+    validationModal(){
+        this.form = this.fb.group({
+            description: [this.course.description, Validators.required],
+            category: [this.course.category, Validators.required],
             releasedAt: [moment(), Validators.required],
-            longDescription: [course.longDescription,Validators.required]
+            longDescription: [this.course.longDescription,Validators.required]
         });
-
     }
 
-    ngAfterViewInit() {
 
-    }
 
+    // ================ SAVING DATA AND SUBSCRIBING IT IN THE MODAL ==============//
     save() {
         const changes = this.form.value;
         this.coursesStore.saveCourse(this.course.id, changes).subscribe() 
@@ -45,6 +51,8 @@ export class CourseDialogComponent implements AfterViewInit {
     }
 
 
+
+    // ================ CLOSING DIALOG MODAL ==============//
     close() {
         this.dialogRef.close();
     }
