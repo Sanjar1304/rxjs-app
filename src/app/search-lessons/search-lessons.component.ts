@@ -23,7 +23,7 @@ export class SearchLessonsComponent implements OnInit {
   onSearch(search: string){
     this.searchResults$ = this.coursesService.searchLessons(search);
   }
-
+  
 
 
   openLesson(lesson: Lesson){
